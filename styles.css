@@ -132,6 +132,7 @@ table {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 6px;
 }
 
 .action_buttons {
@@ -186,3 +187,36 @@ button {
     }
 
 }
+
+
+.bg {
+    display: flex;
+    background-size: 300% 300%;
+    background-image: linear-gradient(-45deg, #e3ca3b 0%, #fdfdfd 25%, #bb50db 51%, #4487df 100%);
+    -webkit-animation: AnimateBG 20s ease infinite;
+            animation: AnimateBG 20s ease infinite;
+  }
+  
+  @-webkit-keyframes AnimateBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes AnimateBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }

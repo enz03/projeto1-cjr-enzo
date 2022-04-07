@@ -12,15 +12,28 @@ let users = [
     {id:11,first_name:"Fer",last_name:"Piddle",email:"ferspiddle9@nationalgeographic.com", created_at:"20/10/2022"},]
 
     const qtdUsers = 5
+  
 
     function mod(n, m){
         return ((n % m) + m) % m;
       }
 
     function deleteUser(id, page){
+        let original_qtdPages = Math.ceil(users.length/qtdUsers)       
+
         users = users.filter(user => user.id !== id)
         document.getElementById(`${id}`).remove()
-        setPagination(page)
+        qtdPages = Math.ceil(users.length/qtdUsers)
+
+
+        if (original_qtdPages > qtdPages && page === qtdPages){
+
+          getUsersElements(page-1).forEach(userElement => tbody.appendChild(userElement))
+          setPagination(page-1)
+
+        }else{
+          setPagination(page)
+        }
       }
 
     function getUsersElements(page = 0){
@@ -28,6 +41,7 @@ let users = [
         const end = start + qtdUsers
       
         return users.slice(start, end).map(user => {
+
           let row = document.createElement('tr')
           row.setAttribute('id', user.id)
       
